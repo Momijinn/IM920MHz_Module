@@ -2,7 +2,6 @@
 # -*- coding: UTF-8 -*-
 '''
 パッケージpyserialをインストールすること
-pytho2.x系で動作(python3.*系も動作検証済み)
 Creater：Kaname Takano
 '''
 import serial

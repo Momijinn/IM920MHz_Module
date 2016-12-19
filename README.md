@@ -11,22 +11,33 @@ Pythonで動作します
 * python 3.5  
 
 # 使い方
-IM920.pyをインポートしてください  
-* Srid() ：ペアリング
+* IM920.pyをインポートしてください  
 
-* Erid()：ペアリングデバイスの削除
+* IM920.pyにてcomポートを適宜変更してください  
+```Python
+#platformの切り替え 
+if platform.system() == 'Windows':  #windowsの場合はここを変える
+    portnumber = 'COM4'
+elif platform.system() == 'Linux': #Linuxの場合はココを変える
+    portnumber = '/dev/ttyUSB0'
+```
 
-* Send()：文字列送信
+* 使用できるコマンド
+  * Srid() ：ペアリング
 
-* Reception()：文字列の受信
+  * Erid()：ペアリングデバイスの削除
 
-* Repeater()：中継機化
+  * Send()：文字列送信
 
-* Rdid()：固有IDの表示
+  * Reception()：文字列の受信
 
-* Sbrt()：ボーレートの設定
+  * Repeater()：中継機化
 
-詳しい使い方は、sample.pyを参照してください
+  * Rdid()：固有IDの表示
+
+  * Sbrt()：ボーレートの設定
+
+  詳しい使い方は、sample.pyを参照してください
 
 # その他
 リファレンスを見ると、これ以外にも色々使用できるコマンドがありますが、使えそうなのをピックアップしました。
