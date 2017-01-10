@@ -2,6 +2,7 @@
 # -*- coding: UTF-8 -*-
 '''
 パッケージpyserialをインストールすること
+pytho2.x系で動作(python3.*系も動作検証済み)
 Creater：Kaname Takano
 '''
 import serial
@@ -144,16 +145,20 @@ def Reception(mybaudrate):
     com.flushInput()
 
     text = ""
-    text = com.readline().decode('utf-8').strip() #受信と空白の削除
-    text = text.replace("\r\n","")
-    text = text.split(":")[1]
-    text = text.split(",")
-
     cngtext = ""
-    for x in text:
-        cngtext += chr(int(x,16))
+    try:
+        text = com.readline().decode('utf-8').strip() #受信と空白の削除
+        com.close()
+        text = text.replace("\r\n","")
+        text = text.split(":")[1]
+        text = text.split(",")
 
-    com.close()
+        for x in text:
+            cngtext += chr(int(x,16))
+
+    except Exception:
+        print("not input data")
+
     return cngtext
 
 '''
@@ -161,27 +166,10 @@ def Reception(mybaudrate):
 mybaudrate:ボーレート
 '''
 def Repeater(mybaudrate):
-    com = setSerial(mybaudrate)
-    com.flushInput()
-
     signal.signal(signal.SIGINT, signal_handler)
 
     while True:
-        text = ''
-        com.flushInput()
-        text = com.readline().decode('utf-8').strip()
-        if text == '': continue
-        texts = text.split(':')
-        if len(texts) > 1:
-            text = text.split(":")[1]
-
-        com.write(b'TXDA ' + text.encode('utf-8') + b'\r\n')
-
-        text = text.split(",")
-        cngtext = ""
-        for item in text:
-            cngtext += chr(int(item,16))
-        print(cngtext)
-
-        com.flushOutput()
-        com.readline()
+        data = Reception(mybaudrate)
+        if len(data) != 0:
+            print("input data:", data)
+            Send(19200, data)
