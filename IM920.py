@@ -10,10 +10,22 @@ import binascii
 import signal
 import sys
 import platform
+from serial.tools import list_ports
 
-#platformの切り替え 
+#platformの切り替え
 if platform.system() == 'Windows':  #windows用
-    portnumber = 'COM4'
+    ports = list_ports.comports()
+    portnumber = None
+    for port in ports:
+        if (port.vid == 1027) and (port.pid == 24597): #プロダクトIDとベンダーIDが一致したら接続
+            portnumber = port.device
+            print("connect to " + portnumber)
+            break
+
+    if portnumber == None:
+        print("not connetc to im920!")
+        sys.exit(1)
+
 elif platform.system() == 'Linux': #Linux用
     portnumber = '/dev/ttyUSB0'
 

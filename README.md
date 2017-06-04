@@ -1,26 +1,20 @@
 # IM920MHz_Module
-interplan社の920MHz帯モジュール([IM920MHz](http://www.interplan.co.jp/solution/wireless/im920.php))のライブラリ  
+interplan社の920MHz帯モジュール([IM920MHz](http://www.interplan.co.jp/solution/wireless/im920.php))のライブラリ
 Pythonで動作します
 
 # 必要なモジュール
-* serial  
-  インストール：pip install pyserial  
+* serial
+  インストール：pip install pyserial
 
 # 動作確認した環境
-* python 2.7  
-* python 3.5  
+* python 2.7
+* python 3.5
 
 # 使い方
-* IM920.pyをインポートしてください  
+* IM920.pyをインポートしてください
 
-* IM920.pyにてcomポートを適宜変更してください  
-```Python
-#platformの切り替え 
-if platform.system() == 'Windows':  #windowsの場合はここを変える
-    portnumber = 'COM4'
-elif platform.system() == 'Linux': #Linuxの場合はココを変える
-    portnumber = '/dev/ttyUSB0'
-```
+* windowsのみcomポートを確認しなくてもIM920へ接続します  
+  これに伴い，パソコンにIM920が2台以上接続しているcomポートが小さい数字の方へ接続されます
 
 * 使用できるコマンド
   * Srid() ：ペアリング
