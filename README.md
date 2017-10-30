@@ -1,37 +1,57 @@
-# IM920MHz_Module
+IM920MHz_Module
+====
 interplan社の920MHz帯モジュール([IM920MHz](http://www.interplan.co.jp/solution/wireless/im920.php))のライブラリ
-Pythonで動作します
 
-# 必要なモジュール
-* serial
-  インストール：pip install pyserial
+## Description
+interplan社の920MHz帯モジュール([IM920MHz](http://www.interplan.co.jp/solution/wireless/im920.php))をPythonで簡単に使いやすくしたモジュールプログラム
 
-# 動作確認した環境
-* python 2.7
-* python 3.5
+## Requirement
+* 動作確認したpython
 
-# 使い方
-* IM920.pyをインポートしてください
+    python2.7 & 3.5
 
-* windowsのみcomポートを確認しなくてもIM920へ接続します  
-  これに伴い，パソコンにIM920が2台以上接続しているcomポートが小さい数字の方へ接続されます
+* install module
+    ```bash
+    $ pip install pyserial
+    ```
+
+## Demo
+```bash
+$ python sample.py
+52C3
+```
+
+## Usage
+* windowsのみcomポートを確認しなくてもIM920へ接続します
+
+    これに伴い，パソコンにIM920が2台以上接続しているcomポートが小さい数字の方へ接続されます
+
 
 * 使用できるコマンド
-  * Srid() ：ペアリング
+  * Im920.Srid() ：ペアリング
 
-  * Erid()：ペアリングデバイスの削除
+  * Im920.Erid()：ペアリングデバイスの削除
 
-  * Send()：文字列送信
+  * Im920.Send()：文字列送信
 
-  * Reception()：文字列の受信
+  * Im920.Reception()：文字列の受信
 
-  * Repeater()：中継機化
+  * Im920.Repeater()：中継機化
 
-  * Rdid()：固有IDの表示
+  * Im920.Rdid()：固有IDの表示
 
-  * Sbrt()：ボーレートの設定
+  * Im920.Sbrt()：ボーレートの設定
 
-  詳しい使い方は、sample.pyを参照してください
+## Install
+* IM920.pyをインポート
+    ```python
+    import IM920
+    ```
 
-# その他
-リファレンスを見ると、これ以外にも色々使用できるコマンドがありますが、使えそうなのをピックアップしました。
+## Licence
+This software is released under the MIT License, see LICENSE.
+
+## Author
+[Twitter](https://twitter.com/momijinn_aka)
+
+[Blog](http://www.autumn-color.com/)
